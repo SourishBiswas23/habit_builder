@@ -72,6 +72,7 @@ flutter:
     - assets/images/forgot_password.png
   # logo
     - assets/logo/google_logo.png
+    - assets/logo/facebook_logo.png
   # navbar selected icons
     - assets/images/community_selected.png
     - assets/images/courses_selected.png
