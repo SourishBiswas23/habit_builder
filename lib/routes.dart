@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:habit_builder/views/not_found_screen/not_found_screen.dart';
-import 'package:habit_builder/views/splash_screen/splash_screen.dart';
+
+import 'views/onboarding/splash_screen/splash_screen.dart';
 
 enum AppRoute {
   splashScreen,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:habit_builder/app_theme.dart';
 import 'package:habit_builder/routes.dart';
-import 'package:habit_builder/views/splash_screen/splash_screen.dart';
+
+import 'views/onboarding/splash_screen/splash_screen.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
