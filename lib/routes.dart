@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:habit_builder/views/not_found_screen/not_found_screen.dart';
 
+import 'views/not_found_screen/not_found_screen.dart';
+import 'views/onboarding/introduction_screen/introduction_screen.dart';
 import 'views/onboarding/splash_screen/splash_screen.dart';
 
 enum AppRoute {
   splashScreen,
   notFoundScreen,
+  introductionScreen,
 }
 
 class _Paths {
   static const String splashScreen = '/splashScreen';
   static const String notFoundScreen = '/notFoundScreen';
+  static const String introductionScreen = '/introductionScreen';
 
   static const Map<AppRoute, String> _pathMap = {
     AppRoute.splashScreen: _Paths.splashScreen,
     AppRoute.notFoundScreen: _Paths.notFoundScreen,
+    AppRoute.introductionScreen: _Paths.introductionScreen,
   };
 
   static String of(AppRoute appRoute) => _pathMap[appRoute] ?? notFoundScreen;
@@ -33,6 +37,10 @@ class AppNavigator {
       case _Paths.notFoundScreen:
         return MaterialPageRoute(
           builder: (context) => const NotFoundScreen(),
+        );
+      case _Paths.introductionScreen:
+        return MaterialPageRoute(
+          builder: (context) => const IntroductionScreen(),
         );
       default:
         return MaterialPageRoute(

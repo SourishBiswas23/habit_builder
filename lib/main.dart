@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:habit_builder/app_theme.dart';
-import 'package:habit_builder/routes.dart';
+import 'package:habit_builder/views/onboarding/introduction_screen/introduction_screen.dart';
 
-import 'views/onboarding/splash_screen/splash_screen.dart';
+import 'app_theme.dart';
+import 'routes.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Habit Builder',
       theme: AppTheme().themeData,
-      home: const SplashScreen(),
+      home: const IntroductionScreen(),
       onGenerateRoute: AppNavigator.onGenerateRoute,
       navigatorKey: AppNavigator.navigatorKey,
       scaffoldMessengerKey: AppNavigator.scaffoldMessengerState,
