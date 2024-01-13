@@ -142,9 +142,23 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       const LoginButton(),
                       const SizedBox(height: 10),
-                      const Text(
-                        'Forgot Password ?',
-                        style: TextStyle(fontSize: 14),
+                      InkWell(
+                        onTap: () => AppNavigator.pushReplace(
+                          appRoute: AppRoute.forgotPasswordScreen,
+                        ),
+                        child: const Text(
+                          'Forgot Password ?',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w900,
+                            shadows: [
+                              Shadow(
+                                offset: Offset(0.2, 0.2),
+                                color: AppTheme.eclipse,
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 5),
                       Row(
