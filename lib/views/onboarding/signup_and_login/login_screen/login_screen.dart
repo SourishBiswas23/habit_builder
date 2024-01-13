@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 import '../../../../app_theme.dart';
+import '../../../../routes.dart';
 import 'email_and_password_field.dart';
 import 'login_button.dart';
 
@@ -156,7 +156,9 @@ class LoginScreen extends StatelessWidget {
                             style: TextStyle(fontSize: 14),
                           ),
                           InkWell(
-                            onTap: () => Logger().i('Signed Up'),
+                            onTap: () => AppNavigator.pushReplace(
+                              appRoute: AppRoute.signupScreen,
+                            ),
                             child: const Text(
                               'Sign Up',
                               style: TextStyle(
