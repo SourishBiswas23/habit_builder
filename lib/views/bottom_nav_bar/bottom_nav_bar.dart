@@ -104,6 +104,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               ),
             ),
           ),
+          resizeToAvoidBottomInset: false,
           floatingActionButtonLocation:
               FloatingActionButtonLocation.miniCenterDocked,
           bottomNavigationBar: ClipPath(
