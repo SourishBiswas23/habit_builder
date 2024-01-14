@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:habit_builder/controllers/habit_bloc/habit_bloc.dart';
 import 'package:habit_builder/firebase_options.dart';
 
 import 'app_theme.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AuthBloc(),
+        ),
+        BlocProvider(
+          create: (context) => HabitBloc(),
         ),
       ],
       child: MaterialApp(

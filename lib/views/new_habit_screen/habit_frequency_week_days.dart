@@ -11,24 +11,32 @@ class HabitFrequencyWeekDays extends StatefulWidget {
 }
 
 class _HabitFrequencyWeekDaysState extends State<HabitFrequencyWeekDays> {
-  final weekDays = const ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-  bool isSelected = true;
+  Map<String, bool> weekDays = {
+    'SUN': true,
+    'MON': true,
+    'TUE': true,
+    'WED': true,
+    'THU': true,
+    'FRI': true,
+    'SAT': true
+  };
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Row(
-      children: weekDays.map(
+      children: weekDays.keys.map(
         (weekDay) {
+          final isSelected = weekDays[weekDay];
           return Expanded(
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: weekDay == weekDays.first
+                  bottomLeft: weekDay == weekDays.keys.first
                       ? const Radius.circular(10)
                       : const Radius.circular(0),
-                  bottomRight: weekDay == weekDays.last
+                  bottomRight: weekDay == weekDays.keys.last
                       ? const Radius.circular(10)
                       : const Radius.circular(0),
                 ),
@@ -37,7 +45,7 @@ class _HabitFrequencyWeekDaysState extends State<HabitFrequencyWeekDays> {
                     width: 1,
                     color: AppTheme.creame,
                   ),
-                  right: weekDay != weekDays.last
+                  right: weekDay != weekDays.keys.last
                       ? const BorderSide(
                           width: 1,
                           color: AppTheme.creame,
@@ -61,13 +69,13 @@ class _HabitFrequencyWeekDaysState extends State<HabitFrequencyWeekDays> {
                     GestureDetector(
                       onTap: () {
                         setState(() {
-                          isSelected = !isSelected;
+                          weekDays[weekDay] = !isSelected;
                         });
                       },
                       child: Container(
                         height: 34,
                         width: 34,
-                        padding: isSelected
+                        padding: isSelected!
                             ? EdgeInsets.zero
                             : const EdgeInsets.all(1),
                         decoration: BoxDecoration(
