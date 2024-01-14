@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:habit_builder/routes.dart';
 
 import '../../app_theme.dart';
 
@@ -40,9 +41,14 @@ class HabitNameFieldAndButton extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const FaIcon(
-                FontAwesomeIcons.bookOpenReader,
-                color: AppTheme.eclipse,
+              child: GestureDetector(
+                onTap: () {
+                  // AppNavigator.
+                },
+                child: const FaIcon(
+                  FontAwesomeIcons.bookOpenReader,
+                  color: AppTheme.eclipse,
+                ),
               ),
             ),
             Positioned(

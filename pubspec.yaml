@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.9
   font_awesome_flutter: ^10.6.0
   flutter_switch: ^0.3.2
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +93,8 @@ flutter:
     - assets/images/down_arrow.svg
     - assets/images/start_habit_icon.png
     - assets/images/background.png
+    - assets/images/homepage_habit_image.png
+    - assets/images/habit_completed.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
