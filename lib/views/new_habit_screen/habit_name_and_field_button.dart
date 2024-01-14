@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:habit_builder/routes.dart';
 
 import '../../app_theme.dart';
 
@@ -43,7 +42,6 @@ class HabitNameFieldAndButton extends StatelessWidget {
               ),
               child: GestureDetector(
                 onTap: () {
-                  // AppNavigator.
                 },
                 child: const FaIcon(
                   FontAwesomeIcons.bookOpenReader,

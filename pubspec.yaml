@@ -42,6 +42,7 @@ dependencies:
   font_awesome_flutter: ^10.6.0
   flutter_switch: ^0.3.2
   intl: ^0.19.0
+  url_launcher: ^6.2.3
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +96,9 @@ flutter:
     - assets/images/background.png
     - assets/images/homepage_habit_image.png
     - assets/images/habit_completed.png
+    - assets/images/course_banner.png
+    - assets/images/atomic_habits.jpg
+    - assets/images/forming_habits.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
