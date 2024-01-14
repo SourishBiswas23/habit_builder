@@ -33,14 +33,14 @@ class _HabitFrequencyWeekDaysState extends State<HabitFrequencyWeekDays> {
                       : const Radius.circular(0),
                 ),
                 border: Border(
-                  top: BorderSide(
+                  top: const BorderSide(
                     width: 1,
-                    color: AppTheme.morning.withOpacity(0.2),
+                    color: AppTheme.creame,
                   ),
                   right: weekDay != weekDays.last
-                      ? BorderSide(
+                      ? const BorderSide(
                           width: 1,
-                          color: AppTheme.morning.withOpacity(0.2),
+                          color: AppTheme.creame,
                         )
                       : BorderSide.none,
                 ),

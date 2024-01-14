@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:habit_builder/views/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:habit_builder/views/new_habit_screen/new_habit_screen.dart';
-import 'package:habit_builder/views/onboarding/signup_and_login/forgot_password_screen/forgot_password_screen.dart';
-import 'package:habit_builder/views/onboarding/signup_and_login/signup_screen/signup_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'app_theme.dart';
+import 'controllers/bottom__nav_bar_bloc.dart/bottom_nav_bar_bloc.dart';
 import 'routes.dart';
+import 'views/bottom_nav_bar/bottom_nav_bar.dart';
 
 void main(List<String> args) {
   runApp(const MyApp());
@@ -16,13 +15,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Habit Builder',
-      theme: AppTheme().themeData,
-      home: const NewHabitScreen(),
-      onGenerateRoute: AppNavigator.onGenerateRoute,
-      navigatorKey: AppNavigator.navigatorKey,
-      scaffoldMessengerKey: AppNavigator.scaffoldMessengerState,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => BottomNavBarBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Habit Builder',
+        theme: AppTheme().themeData,
+        home: const BottomNavBar(),
+        onGenerateRoute: AppNavigator.onGenerateRoute,
+        navigatorKey: AppNavigator.navigatorKey,
+        scaffoldMessengerKey: AppNavigator.scaffoldMessengerState,
+      ),
     );
   }
 }

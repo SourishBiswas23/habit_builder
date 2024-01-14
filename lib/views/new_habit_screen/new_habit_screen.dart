@@ -11,40 +11,34 @@ class NewHabitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('New Habit'),
-      ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Positioned(
-              bottom: 0,
-              child: Image.asset(
-                'assets/images/background.png',
-                fit: BoxFit.cover,
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  HabitNameFieldAndButton(),
-                  SizedBox(height: 10),
-                  HabitFrequency(),
-                  SizedBox(height: 10),
-                  Reminder(),
-                  SizedBox(height: 10),
-                  Nofitications(),
-                  SizedBox(height: 10),
-                  StartHabitDialouge()
-                ],
-              ),
-            ),
-          ],
+    return Stack(
+      children: [
+        Positioned(
+          bottom: 0,
+          child: Image.asset(
+            'assets/images/background.png',
+            fit: BoxFit.cover,
+          ),
         ),
-      ),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              HabitNameFieldAndButton(),
+              SizedBox(height: 10),
+              HabitFrequency(),
+              SizedBox(height: 10),
+              Reminder(),
+              SizedBox(height: 10),
+              Nofitications(),
+              SizedBox(height: 10),
+              StartHabitDialouge(),
+              Spacer()
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
