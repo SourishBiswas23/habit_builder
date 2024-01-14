@@ -1,13 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app_theme.dart';
+import '../../../../controllers/auth_bloc/auth_bloc.dart';
 import '../../../../routes.dart';
 import 'email_and_password_field.dart';
 import 'login_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+  
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -49,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                       'MONUMENTAL HABITS',
                       style: theme.textTheme.headlineMedium,
                     ),
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 125),
                     Container(
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       height: 50,
@@ -68,40 +93,21 @@ class LoginScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 30),
-                          const Text(
-                            'Continue with Google',
-                            style: TextStyle(fontWeight: FontWeight.w700),
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 5),
-                    Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.white,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            child: Image.asset(
-                              'assets/logo/facebook_logo.png',
-                              fit: BoxFit.fitHeight,
+                          GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<AuthBloc>()
+                                  .add(SignInWithGoogleEvent());
+                            },
+                            child: const Text(
+                              'Continue with Google',
+                              style: TextStyle(fontWeight: FontWeight.w700),
                             ),
-                          ),
-                          const SizedBox(width: 30),
-                          const Text(
-                            'Continue with Facebook',
-                            style: TextStyle(fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -127,20 +133,25 @@ class LoginScreen extends StatelessWidget {
                         style: theme.textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 20),
-                      const EmailAndPasswordField(
+                      EmailAndPasswordField(
                         hintText: 'Email Id',
                         iconData: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
+                        controller: emailController,
                       ),
                       const SizedBox(height: 10),
-                      const EmailAndPasswordField(
+                      EmailAndPasswordField(
                         hintText: 'Password',
                         iconData: Icons.lock_outline,
                         keyboardType: TextInputType.visiblePassword,
+                        controller: passwordController,
                         isPassword: true,
                       ),
                       const SizedBox(height: 10),
-                      const LoginButton(),
+                      LoginButton(
+                        emailController: emailController,
+                        passwordController: passwordController,
+                      ),
                       const SizedBox(height: 10),
                       InkWell(
                         onTap: () => AppNavigator.pushReplace(

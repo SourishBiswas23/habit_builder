@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../app_theme.dart';
+import '../../../../controllers/auth_bloc/auth_bloc.dart';
 
 class SendResetLinkButton extends StatelessWidget {
-  const SendResetLinkButton({super.key});
+  const SendResetLinkButton({
+    super.key,
+    required this.controller,
+  });
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +21,13 @@ class SendResetLinkButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         child: Material(
           child: InkWell(
-            onTap: () => Logger().i('Send Reset Link'),
+            onTap: () {
+              context.read<AuthBloc>().add(
+                    SendPasswordResetEmailEvent(
+                      emailId: controller.text,
+                    ),
+                  );
+            },
             splashColor: Colors.orange,
             child: Ink(
               color: AppTheme.morning,

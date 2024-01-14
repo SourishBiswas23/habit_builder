@@ -1,8 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:habit_builder/auth/auth.dart';
 
-class SplashScreen extends StatelessWidget {
+import '../../../routes.dart';
+
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    navigateToOtherScreens();
+  }
+
+  Future<void> navigateToOtherScreens() async {
+    final bool isSignedIn = await Auth().isSignedIn();
+    if (isSignedIn) {
+      AppNavigator.pushReplace(appRoute: AppRoute.bottomNavBarScreen);
+    } else {
+      AppNavigator.pushReplace(appRoute: AppRoute.loginScreen);
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);

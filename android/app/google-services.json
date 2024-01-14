@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "646803925681",
+    "project_id": "united-hacks-hackathon",
+    "storage_bucket": "united-hacks-hackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646803925681:android:ac0ce3c7732fc9e316d090",
+        "android_client_info": {
+          "package_name": "com.example.habit_builder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkTOm9TgkOYw2-UHScLMZirfq0GV8DteQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

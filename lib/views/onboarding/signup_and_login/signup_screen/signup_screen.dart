@@ -7,8 +7,34 @@ import 'email_password_and_username_field.dart';
 import 'google_and_facebook_signup_button.dart';
 import 'signup_divider.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  late final TextEditingController userNameController;
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+
+  @override
+  void initState() {
+    userNameController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    userNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -37,34 +63,41 @@ class SignupScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: theme.textTheme.headlineSmall,
               ),
-              const Column(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   EmailPasswordAndUsernameField(
                     hintText: 'Username',
                     iconData: Icons.person_outline,
                     keyboardType: TextInputType.name,
+                    controller: userNameController,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   EmailPasswordAndUsernameField(
                     hintText: 'Email Id',
                     iconData: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
+                    controller: emailController,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   EmailPasswordAndUsernameField(
                     hintText: 'Password',
                     iconData: Icons.lock_outline,
                     keyboardType: TextInputType.visiblePassword,
                     isPassword: true,
+                    controller: passwordController,
                   ),
-                  SizedBox(height: 10),
-                  CreateAccountButton(),
-                  SizedBox(height: 5),
-                  SignUpDivider(),
-                  SizedBox(height: 5),
-                  Row(
+                  const SizedBox(height: 10),
+                  CreateAccountButton(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                    userNameController: userNameController,
+                  ),
+                  const SizedBox(height: 5),
+                  const SignUpDivider(),
+                  const SizedBox(height: 5),
+                  const Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -72,15 +105,10 @@ class SignupScreen extends StatelessWidget {
                         buttonText: 'Google',
                         iconPath: 'assets/logo/google_logo.png',
                       ),
-                      SizedBox(width: 20),
-                      GoogleAndFacebookSignUpButton(
-                        buttonText: 'Facebook',
-                        iconPath: 'assets/logo/facebook_logo.png',
-                      ),
                     ],
                   ),
-                  SizedBox(height: 10),
-                  AlreadyHaveAccountText(),
+                  const SizedBox(height: 10),
+                  const AlreadyHaveAccountText(),
                 ],
               ),
             ],

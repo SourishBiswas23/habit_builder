@@ -7,12 +7,14 @@ class EmailPasswordAndUsernameField extends StatefulWidget {
     required this.hintText,
     required this.iconData,
     required this.keyboardType,
+    required this.controller,
     this.isPassword = false,
   });
   final String hintText;
   final IconData iconData;
   final TextInputType keyboardType;
   final bool isPassword;
+  final TextEditingController controller;
 
   @override
   State<EmailPasswordAndUsernameField> createState() =>
@@ -26,6 +28,7 @@ class _EmailPasswordAndUsernameFieldState
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       keyboardType: widget.keyboardType,
       obscureText: widget.isPassword && obscureText,
       style: const TextStyle(color: AppTheme.morning),

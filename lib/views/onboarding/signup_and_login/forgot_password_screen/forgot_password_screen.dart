@@ -4,9 +4,28 @@ import '../../../../app_theme.dart';
 import 'remembered_password.dart';
 import 'send_reset_link_button.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
 
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  late final TextEditingController emailController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -41,22 +60,23 @@ class ForgotPasswordScreen extends StatelessWidget {
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Enter your registered email below to receive password reset instruction',
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextField(
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
+                      controller: emailController,
+                      decoration: const InputDecoration(
                         hintText: 'Email Id',
                         prefixIcon: Icon(Icons.email_outlined),
                       ),
                     ),
-                    SendResetLinkButton(),
+                    SendResetLinkButton(controller: emailController),
                   ],
                 ),
               ),
