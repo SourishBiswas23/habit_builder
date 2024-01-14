@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_builder/views/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:habit_builder/views/new_habit_screen/new_habit_screen.dart';
 import 'package:habit_builder/views/onboarding/signup_and_login/forgot_password_screen/forgot_password_screen.dart';
 
 import 'views/not_found_screen/not_found_screen.dart';
@@ -16,6 +17,7 @@ enum AppRoute {
   signupScreen,
   forgotPasswordScreen,
   bottomNavBarScreen,
+  newHabitScreen,
 }
 
 class _Paths {
@@ -26,6 +28,7 @@ class _Paths {
   static const String signupScreen = '/signupScreen';
   static const String forgotPasswordScreen = '/forgotPasswordScreen';
   static const String bottomNavBarScreen = '/bottomNavBarScreen';
+  static const String newHabitScreen = '/newHabitScreen';
 
   static const Map<AppRoute, String> _pathMap = {
     AppRoute.splashScreen: _Paths.splashScreen,
@@ -35,6 +38,7 @@ class _Paths {
     AppRoute.signupScreen: _Paths.signupScreen,
     AppRoute.forgotPasswordScreen: _Paths.forgotPasswordScreen,
     AppRoute.bottomNavBarScreen: _Paths.bottomNavBarScreen,
+    AppRoute.newHabitScreen: _Paths.newHabitScreen,
   };
 
   static String of(AppRoute appRoute) => _pathMap[appRoute] ?? notFoundScreen;
@@ -73,6 +77,10 @@ class AppNavigator {
       case _Paths.bottomNavBarScreen:
         return MaterialPageRoute(
           builder: (context) => const BottomNavBar(),
+        );
+      case _Paths.newHabitScreen:
+        return MaterialPageRoute(
+          builder: (context) => const NewHabitScreen(),
         );
       default:
         return MaterialPageRoute(

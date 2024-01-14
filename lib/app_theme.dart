@@ -10,7 +10,23 @@ class AppTheme {
   static const Color transparentWhite = Color.fromARGB(0, 255, 243, 233);
 
   final ThemeData themeData = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: creame,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: creame,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        color: eclipse,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        fontFamily: 'manrope',
+        shadows: [
+          Shadow(
+            offset: Offset(0.2, 0.2),
+            color: AppTheme.eclipse,
+          )
+        ],
+      ),
+    ),
     primaryColor: fog,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
